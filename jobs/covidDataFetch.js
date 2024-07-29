@@ -70,7 +70,6 @@ module.exports = async function () {
         .catch((err) => {
           console.log("Fetching data failed for date: ", todayDate, err);
         });
-      //   await client.indices.refresh({ index: INDEX });
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
