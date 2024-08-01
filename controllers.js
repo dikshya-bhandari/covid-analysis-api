@@ -8,6 +8,7 @@ const getDatefromDateRange = (data) =>
     console.log(startDate, endDate);
     const query = {
       index: INDEX,
+      size: 65,
       body: {
         query: {
           range: {
@@ -31,6 +32,31 @@ const getDatefromDateRange = (data) =>
       });
   });
 
+const getDatefromDate = (data) =>
+  new Promise((resolve, reject) => {
+    const { date } = data;
+    const query = {
+      index: INDEX,
+      body: {
+        query: {
+          term: {
+            date: date,
+          },
+        },
+      },
+    };
+
+    client
+      .search(query)
+      .then((res) => {
+        resolve(res.hits.hits);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+
 module.exports = {
   getDatefromDateRange,
+  getDatefromDate,
 };

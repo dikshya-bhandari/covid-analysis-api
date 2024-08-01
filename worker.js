@@ -5,7 +5,7 @@ const covidDataFetchJobs = require("./jobs/covidDataFetch");
 // const interval = "* * * * *";
 // every day -> "0 0 * * *"
 
-const interval = "* * * * *";
+const interval = "0 0 * * *";
 
 cron.schedule(interval, () => {
   covidDataFetchJobs();
