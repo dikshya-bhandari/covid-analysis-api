@@ -11,12 +11,14 @@ This Node.js project is designed to recurrently fetch day-to-day COVID-19 datase
 
 3. I used API (ii) to get the report for a specific date. The API returned entire metrics of a specific date for all the regions.
 
-4. I am running /worker.js to run recurrent jobs of calling API (ii) increasing the date by a day everyday. The last fetched dates are maintained in the file utils/currentDate.txt.
+4. I am running /worker.js to run recurrent jobs of calling API (ii) increasing the date by a day everyday. I am using node-cron library for this purpose. The last fetched dates are maintained in the file utils/currentDate.txt.
 
 5. I am running /server.js to make the two endpoints /getDatafromDateRange and 
 /getDatafromDate.
 
 6. The both processes are running in parallel using node pm2 service which is a process manager FOR node.js
+
+NOTE: I have already fetched data between 2020-02-01 and 2020-09-15 at the time of submission of this assignment. The job runs once a day everyday and the data will continue to insert into elasticsearch for the subsequent days after 2020-09-15 using the recurrent jobs
 
 ## Installation
 
